@@ -1,0 +1,19 @@
+# Ignora file di configurazione del database
+config.php
+
+# Ignora file di log
+*.log
+
+# Ignora directory delle dipendenze
+/vendor/
+
+# Ignora file temporanei e di sistema
+*.tmp
+*.swp
+.DS_Store
+
+# Ignora dump SQL
+#/dumps/
+
+# Ignora configurazioni IDE
+.vscode/
