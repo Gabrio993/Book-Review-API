@@ -22,6 +22,7 @@ class Libro
         $this->annoPubblicazione = $annoPubblicazione;
         $this->genere = $genere;
         $this->isbn = $isbn;
+        $this->id_casa_editrice = $id_casa_editrice;
     }
 
     // Metodo per recuperare tutti i libri
@@ -46,6 +47,7 @@ class Libro
             $this->annoPubblicazione = $libro['anno_pubblicazione'];
             $this->genere = $libro['genere'];
             $this->isbn = $libro['isbn'];
+            $this->id_casa_editrice = $libro['id_casa_editrice'];
         }
 
         return $libro;
@@ -63,7 +65,7 @@ class Libro
     public function createBook($titolo, $id_autore, $annoPubblicazione, $genere, $isbn, $id_casa_editrice)
     {
         // Prepara la query per inserire un nuovo libro
-        $stmt = $this->db->prepare("INSERT INTO libro (titolo, id_autore, anno_pubblicazione, genere, isbn) VALUES (:titolo, :id_autore, :anno_pubblicazione, :genere, :isbn)");
+        $stmt = $this->db->prepare("INSERT INTO libro (titolo, id_autore, anno_pubblicazione, genere, isbn, id_casa_editrice) VALUES (:titolo, :id_autore, :anno_pubblicazione, :genere, :isbn, :id_casa_editrice)");
 
         // Esegui la query passando i parametri
         $result = $stmt->execute([
@@ -71,7 +73,8 @@ class Libro
             "id_autore" => $id_autore,
             "anno_pubblicazione" => $annoPubblicazione,
             "genere" => $genere,
-            "isbn" => $isbn
+            "isbn" => $isbn,
+            "id_casa_editrice" => $id_casa_editrice
         ]);
 
         // Verifica se l'inserimento è avvenuto con successo
