@@ -32,3 +32,6 @@ echo "</pre>";
 // echo "<pre>";
 // $controller4->create("Zorro", 4, 1980, "Storico", 1783434523893);
 // echo "</pre>";
+/*------------ Aggiorna un libro------------*/
+ // ThunderClient o Postman per verifica
+/*------------Elimina un libro--------------*/
