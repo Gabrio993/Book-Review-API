@@ -52,15 +52,31 @@ class LibroController
         }
     }
 
+    //- Metodo per aggiornare un libro (PUT/libro/{id})
+    public function update($id)
+    {   // Otteniamo i dati JSON inviati dal client
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        // Prepariamo i valori da passare al metodo updateBook, impostando a null quelli non forniti
+        $titolo = $data['titolo'] ?? null;
+        $id_autore = $data['id_autore'] ?? null;
+        $annoPubblicazione = $data['anno_pubblicazione'] ?? null;
+        $genere = $data['genere'] ?? null;
+        $isbn = $data['isbn'] ?? null;
+        $id_casa_editrice = $data['id_casa_editrice'] ?? null;
+
+        // Chiama il metodo updateBook nel modello Libro
+        $libro = new Libro();
+        $result = $libro->updateBook($id, $titolo, $id_autore, $annoPubblicazione, $genere, $isbn, $id_casa_editrice);
+
+        if ($result) {
+            echo json_encode(["message" => "Libro aggiornato con successo"]);
+        } else {
+            echo json_encode(["message" => "Errore nell'aggiornamento del libro o nessun campo modificato"], JSON_PRETTY_PRINT);
+        }
+    }
+
     /* TODO: 
-    - Metodo per trovare un libro tramite autore (GET/libro)
-    
-    
-    - Metodo per creare un nuovo libro (POST/libro)
-
-
-    - Metodo per aggiornare un libro (PUT/libro/{id})
-
 
     - Metodo per cancellare un libro (DELETE/libro/{id})*/
 }
