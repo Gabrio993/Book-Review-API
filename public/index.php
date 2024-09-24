@@ -12,12 +12,23 @@ require_once "../config/Database.php"; // Inclusione della connessione al db
 echo "Ottieni tutti i libri";
 $controller = new LibroController();
 echo "<pre>";
-$controller->index();
+$controller->getBooks();
 echo "</pre>";
 /*------------Trova libro per id------------*/
 echo "Trova libro per id";
 $controller2 = new LibroController();
 echo "<pre>";
-$controller2->showIdBook(10);
+$controller2->showIdBook(4);
 echo "</pre>";
-/*------------Crea un nuovo Libro------------*/
+/*------------Trova Libro per genere------------*/
+echo "Trova libri per genere";
+$controller3 = new LibroController();
+echo "<pre>";
+$controller3->showGenreBook("Politico");
+echo "</pre>";
+/*------------Crea un nuovo libro------------*/
+// echo "Crea un nuovo libro";
+// $controller4 = new LibroController();
+// echo "<pre>";
+// $controller4->create("Zorro", 4, 1980, "Storico", 1783434523893);
+// echo "</pre>";
