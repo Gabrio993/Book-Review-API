@@ -3,7 +3,7 @@
 class LibroController
 {
     // Metodo per elencare tutti i libri (GET /libro)
-    public function index()
+    public function getBooks()
     {
         $libro = new Libro(); // Crei un'istanza della classe Libro
         $libri = $libro->allBooks(); // Ottieni tutti i libri dal database
@@ -22,6 +22,33 @@ class LibroController
             echo json_encode($libro_data, JSON_PRETTY_PRINT); // Restituisci il libro come JSON
         } else {
             echo json_encode(["message" => "Libro non trovato"], JSON_PRETTY_PRINT); // Se non trovato
+        }
+    }
+
+    // Metodo per recuperare i libri in base al genere
+    public function showGenreBook($genere)
+    {
+        $libro = new Libro();
+        $libriPerGenere = $libro->findBooksByGenre($genere);
+
+
+        if ($libriPerGenere) {
+            echo json_encode($libriPerGenere, JSON_PRETTY_PRINT); // Restituisci i libri come JSON
+        } else {
+            echo json_encode(["message" => "Genere non trovato"], JSON_PRETTY_PRINT); // Se non trovato
+        }
+    }
+
+    // Metodo per creare un nuovo libro
+    public function create($titolo, $id_autore, $annoPubblicazione, $genere, $isbn, $id_casa_editrice)
+    {
+        $libro = new Libro();
+        $nuovoLibro = $libro->createBook($titolo, $id_autore, $annoPubblicazione, $genere, $isbn, $id_casa_editrice);
+
+        if ($nuovoLibro) {
+            echo "Libro creato con successo con ID: $nuovoLibro ";
+        } else {
+            echo "Errore nella creazione del libro.";
         }
     }
 
