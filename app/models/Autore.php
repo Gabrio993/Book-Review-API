@@ -5,14 +5,16 @@ Scope: Creation of the author class
 */
 
 class Autore {
-    public int $id_autore; 
-    public string $nome; 
-    public string $cognome; 
-    public data $data_nascita; 
+    private $db; 
+    private $id_autore; 
+    private $nome; 
+    private $cognome; 
+    private $data_nascita; 
 
     //Construct function 
-    public function __construct($id_autore,$nome,$cognome,$data_nascita)
+    public function __construct($id_autore=null,$nome=null,$cognome=null,$data_nascita=null)
     {
+        $this->db = Database::getInstance(); // Inizializza la connessione al database
         $this->id_autore = $id_autore;
         $this->nome = $nome;
         $this->cognome = $cognome;

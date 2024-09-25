@@ -9,16 +9,16 @@ require_once "../config/Database.php"; // Inclusione della connessione al db
 // Testing
 
 /*------------Ottieni tutti gli utenti------------*/
-echo "Ottieni tutti gli Autori";
+echo "Ottenimento di tutti gli autori";
 $controller = new AutoreController();
 echo "<pre>";
 $controller->getAllAuthors();
 echo "</pre>";
 /*------------Trova utente per id------------*/
-echo "Trova autore per id";
+echo "Ottenimento autore in base all'ID inserito";
 $controller2 = new AutoreController();
 echo "<pre>";
-$controller2->getAuthorsById(2);
+
+$controller2->getAuthorsById(5);
 echo "</pre>";
-/*------------Crea un nuovo Utente------------*/
-// $controller2->createUser(6,"pippoPower","spippo@gmail.com","pippo98");
+

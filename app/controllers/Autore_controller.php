@@ -7,7 +7,7 @@ class AutoreController
     {
         $autore = new Autore(); // Crei un'istanza della classe Autore
         $autori = $autore->allAuthors(); // Ottieni tutti gli utenti dal database
-        echo json_encode($autore, JSON_PRETTY_PRINT); // Restituisci i risultati come JSON
+        echo json_encode($autori, JSON_PRETTY_PRINT); // Restituisci i risultati come JSON
     }
 
     // Metodo per trovare un autore tramite id (GET /autore/{id})
