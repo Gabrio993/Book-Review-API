@@ -21,3 +21,10 @@ echo "<pre>";
 $controller2->getAuthorsById(5);
 echo "</pre>";
 
+/*------------Inserimento nuovo autore------------*/
+// echo "Aggiungo un nuovo autore ";
+// $controller3 = new AutoreController();
+// echo "<pre>";
+// $controller3->createAuthors(6,"Dante","Alighieri","La divina Commedia","1265-09-21");
+// echo "</pre>";
+

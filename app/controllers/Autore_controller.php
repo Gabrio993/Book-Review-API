@@ -1,6 +1,7 @@
 <?php
 
 class AutoreController
+
 {
     // Metodo per elencare tutti gli autori (GET /autore)
     public function getAllAuthors()

@@ -5,11 +5,11 @@ Scope: Creation of the author class
 */
 
 class Autore {
-    private $db; 
-    private $id_autore; 
-    private $nome; 
-    private $cognome; 
-    private $data_nascita; 
+    public $db; 
+    public $id_autore; 
+    public $nome; 
+    public $cognome; 
+    public $data_nascita; 
 
     //Construct function 
     public function __construct($id_autore=null,$nome=null,$cognome=null,$data_nascita=null)
