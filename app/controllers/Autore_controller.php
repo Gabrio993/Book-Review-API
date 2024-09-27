@@ -6,7 +6,7 @@ class AutoreController
     // Metodo per elencare tutti gli autori (GET /autore)
     public function getAllAuthors()
     {
-        $autore = new Autore(); // Crei un'istanza della classe Autore
+        $autore = new AutoreDAO(); // Crei un'istanza della classe Autore
         $autori = $autore->allAuthors(); // Ottieni tutti gli utenti dal database
         echo json_encode($autori, JSON_PRETTY_PRINT); // Restituisci i risultati come JSON
     }
@@ -15,7 +15,7 @@ class AutoreController
     public function getAuthorsById($id_autore)
     {
         // crea un'istanza della classe Autore
-        $autore = new Autore();
+        $autore = new AutoreDAO();
         // cerca l'autore tramite id e popola le proprietà dell'oggetto
         $autore_data = $autore->getAuthorsById($id_autore);
 
@@ -28,7 +28,7 @@ class AutoreController
 
     public function createAuthors($id_autore, $nome, $cognome, $data_nascita){
        // crea un'istanza della classe Autore
-       $autore = new Autore();
+       $autore = new AutoreDAO();
        //Creo il nuovo autore
        $autore->createAuthors($id_autore, $nome, $cognome, $data_nascita);
     }
