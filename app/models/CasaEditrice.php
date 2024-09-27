@@ -127,5 +127,15 @@ class CasaEditrice
     return $result;
   }
 
+  // metodo per cancellare una casa editrice
+  public function deleteCasaEditrice($id_casa_editrice)
+  {
+    // preparazione query
+    $stmt = $this->db->prepare("DELETE FROM casa_editrice WHERE id_casa_editrice = :id_casa_editrice");
 
+    // esecuzione query
+    $result = $stmt->execute(["id_casa_editrice" => $id_casa_editrice]);
+
+    return $result;
+  }
 }
