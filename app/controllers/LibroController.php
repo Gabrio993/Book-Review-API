@@ -5,7 +5,7 @@ class LibroController
     // Metodo per elencare tutti i libri (GET /libro)
     public function getBooks()
     {
-        $libro = new Libro(); // Crei un'istanza della classe Libro
+        $libro = new LibroDAO(); // Crei un'istanza della classe Libro
         $libri = $libro->allBooks(); // Ottieni tutti i libri dal database
         echo json_encode($libri, JSON_PRETTY_PRINT); // Restituisci i risultati come JSON
     }
@@ -14,7 +14,7 @@ class LibroController
     public function showIdBook($id)
     {
         // Crei un'istanza della classe Libro
-        $libro = new Libro();
+        $libro = new LibroDAO();
         // Cerchi il libro tramite id e popoli le proprietà dell'oggetto
         $libro_data = $libro->findIdBook($id);
 
@@ -28,7 +28,7 @@ class LibroController
     // Metodo per recuperare i libri in base al genere
     public function showGenreBook($genere)
     {
-        $libro = new Libro();
+        $libro = new LibroDAO();
         $libriPerGenere = $libro->findBooksByGenre($genere);
 
 
@@ -42,7 +42,7 @@ class LibroController
     // Metodo per creare un nuovo libro
     public function create($titolo, $id_autore, $annoPubblicazione, $genere, $isbn, $id_casa_editrice)
     {
-        $libro = new Libro();
+        $libro = new LibroDAO();
         $nuovoLibro = $libro->createBook($titolo, $id_autore, $annoPubblicazione, $genere, $isbn, $id_casa_editrice);
 
         if ($nuovoLibro) {
@@ -66,7 +66,7 @@ class LibroController
         $id_casa_editrice = $data['id_casa_editrice'] ?? null;
 
         // Chiama il metodo updateBook nel modello Libro
-        $libro = new Libro();
+        $libro = new LibroDAO();
         $result = $libro->updateBook($id, $titolo, $id_autore, $annoPubblicazione, $genere, $isbn, $id_casa_editrice);
 
         if ($result) {
