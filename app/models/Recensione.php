@@ -70,26 +70,27 @@ class Recensione
     }
 
     // Metodo per aggiornare una recensione
-    public function updateRecensione($id, $commento, $valutazione, $nomeUtente, $dataCreazione)
-    {
-        // Validazione dei valori di input
-        if (empty($commento)) {
-            throw new Exception("Il commento non può essere vuoto");
-        }
-        if (!is_int($valutazione) || $valutazione < 1 || $valutazione > 5) {
-            throw new Exception("La valutazione deve essere un intero compreso tra 1 e 5");
-        }
-    
-        // Aggiornamento della recensione
-        $stmt = $this->db->prepare("UPDATE recensione SET commento = :commento, valutazione = :valutazione, nome_utente = :nomeUtente, data_creazione = :dataCreazione WHERE id_recensione = :id");
-        $stmt->execute([
-            "id" => $id,
-            "commento" => $commento,
-            "valutazione" => $valutazione,
-            "nomeUtente" => $nomeUtente,
-            "dataCreazione" => $dataCreazione
-        ]);
+public function updateRecensione($id, $commento, $valutazione, $nomeUtente, $dataCreazione)
+{
+    // Validazione dei valori di input
+    if (empty($commento)) {
+        throw new Exception("Il commento non può essere vuoto");
     }
+    if (!is_int($valutazione) || $valutazione < 1 || $valutazione > 5) {
+        throw new Exception("La valutazione deve essere un intero compreso tra 1 e 5");
+    }
+
+    // Aggiornamento della recensione
+    $stmt = $this->db->prepare("UPDATE recensione SET commento = :commento, valutazione = :valutazione, nome_utente = :nomeUtente, data_creazione = :dataCreazione WHERE id_recensione = :id");
+    $stmt->execute([
+        "id" => $id,
+        "commento" => $commento,
+        "valutazione" => $valutazione,
+        "nomeUtente" => $nomeUtente,
+        "dataCreazione" => $dataCreazione
+    ]);
+}
+
 
     // Metodo per cancellare una recensione
     public function deleteRecensione($id)

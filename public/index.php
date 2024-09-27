@@ -19,7 +19,7 @@ echo "<pre>";
 
 // Testa la funzione updateRecensione
 try {
-    $controller->updateRecensione(3, 'Recensione modificata 3', 4, 'Nome Utente 3', '2023-02-20');
+    $controller->updateRecensione(1, "Nuovo commento", 4, "NomeUtente", date('Y-m-d H:i:s'));
     echo 'Recensione aggiornata con successo!';
 } catch (Exception $e) {
     echo 'Errore durante l\'aggiornamento della recensione: ' . $e->getMessage();
