@@ -31,3 +31,4 @@
 * 27/09/2024: aggiunta di validazione per i valori di input nelle funzioni `createRecensione` e `updateRecensione`.
 * 27/09/2024: creazione del file `README.md` per documentare le modifiche al codice.
 * 27/09/2024: aggiustata connessione al db
+* 27/09/2024: aggiunto commento per aggiornare la recensione

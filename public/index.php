@@ -13,7 +13,17 @@ require_once '../app/controllers/RecensioneController.php';
 require_once '../app/models/Recensione.php';
 
 $controller = new RecensioneController();
+echo "<pre>";
 $controller->getAllRecensioni();
+echo "<pre>";
+
+// Testa la funzione updateRecensione
+try {
+    $controller->updateRecensione(3, 'Recensione modificata 3', 4, 'Nome Utente 3', '2023-02-20');
+    echo 'Recensione aggiornata con successo!';
+} catch (Exception $e) {
+    echo 'Errore durante l\'aggiornamento della recensione: ' . $e->getMessage();
+}
 
 // Crea un'istanza della classe Recensione
 // $recensione = new Recensione();

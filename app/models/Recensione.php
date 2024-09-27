@@ -79,9 +79,9 @@ class Recensione
         if (!is_int($valutazione) || $valutazione < 1 || $valutazione > 5) {
             throw new Exception("La valutazione deve essere un intero compreso tra 1 e 5");
         }
-
+    
         // Aggiornamento della recensione
-        $stmt = $this->db->prepare("UPDATE recensione SET commento = :commento, valutazione = :valutazione, nome_utente = :nomeUtente, data_creazione = :dataCreazione WHERE id = :id");
+        $stmt = $this->db->prepare("UPDATE recensione SET commento = :commento, valutazione = :valutazione, nome_utente = :nomeUtente, data_creazione = :dataCreazione WHERE id_recensione = :id");
         $stmt->execute([
             "id" => $id,
             "commento" => $commento,
