@@ -4,12 +4,12 @@
 
 class Recensione
 {
-    private $db;
-    private $id;
-    private $commento;
-    private $valutazione;
-    private $nomeUtente;
-    private $dataCreazione;
+    public $db;
+    public $id;
+    public $commento;
+    public $valutazione;
+    public $nomeUtente;
+    public $dataCreazione;
 
     // Costruttore per inizializzare l'oggetto Recensione e la connessione al DB
     public function __construct($id = null, $commento = null, $valutazione = null, $nomeUtente = null, $dataCreazione = null)
