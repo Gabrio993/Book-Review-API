@@ -25,11 +25,11 @@ class AutoreController
         }
     }
 
-    public function createAuhtor($id_autore, $nome, $cognome, $data_nascita){
+    public function createAuthors($id_autore, $nome, $cognome, $data_nascita){
        // crea un'istanza della classe Autore
        $autore = new Autore();
        //Creo il nuovo autore
-       $autore->createAuhtor($id_autore, $nome, $cognome, $data_nascita);
+       $autore->createAuthors($id_autore, $nome, $cognome, $data_nascita);
     }
 
 }

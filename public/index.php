@@ -18,7 +18,6 @@ echo "</pre>";
 echo "Ottenimento autore in base all'ID inserito";
 $controller2 = new AutoreController();
 echo "<pre>";
-
 $controller2->getAuthorsById(5);
 echo "</pre>";
 
