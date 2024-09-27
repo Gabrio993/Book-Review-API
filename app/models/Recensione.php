@@ -1,3 +1,5 @@
+[StartOfDocument app/models/Recensione.php]
+[CursorSurroundingLines]
 <?php
 
 class Recensione
@@ -48,6 +50,15 @@ class Recensione
     // Metodo per creare una nuova recensione
     public function createRecensione($id, $commento, $valutazione, $nomeUtente, $dataCreazione)
     {
+        // Validazione dei valori di input
+        if (empty($commento)) {
+            throw new Exception("Il commento non può essere vuoto");
+        }
+        if (!is_int($valutazione) || $valutazione < 1 || $valutazione > 5) {
+            throw new Exception("La valutazione deve essere un intero compreso tra 1 e 5");
+        }
+
+        // Creazione della recensione
         $stmt = $this->db->prepare("INSERT INTO recensione (id, commento, valutazione, nome_utente, data_creazione) VALUES (:id, :commento, :valutazione, :nomeUtente, :dataCreazione)");
         $stmt->execute([
             "id" => $id,
@@ -61,6 +72,15 @@ class Recensione
     // Metodo per aggiornare una recensione
     public function updateRecensione($id, $commento, $valutazione, $nomeUtente, $dataCreazione)
     {
+        // Validazione dei valori di input
+        if (empty($commento)) {
+            throw new Exception("Il commento non può essere vuoto");
+        }
+        if (!is_int($valutazione) || $valutazione < 1 || $valutazione > 5) {
+            throw new Exception("La valutazione deve essere un intero compreso tra 1 e 5");
+        }
+
+        // Aggiornamento della recensione
         $stmt = $this->db->prepare("UPDATE recensione SET commento = :commento, valutazione = :valutazione, nome_utente = :nomeUtente, data_creazione = :dataCreazione WHERE id = :id");
         $stmt->execute([
             "id" => $id,
@@ -71,7 +91,7 @@ class Recensione
         ]);
     }
 
-    // Metodo per cancellare una recensione tramite ID
+    // Metodo per cancellare una recensione
     public function deleteRecensione($id)
     {
         $stmt = $this->db->prepare("DELETE FROM recensione WHERE id = :id");
@@ -83,18 +103,22 @@ class Recensione
     {
         return $this->id;
     }
+
     public function getCommento()
     {
         return $this->commento;
     }
+
     public function getValutazione()
     {
         return $this->valutazione;
     }
+
     public function getNomeUtente()
     {
         return $this->nomeUtente;
     }
+
     public function getDataCreazione()
     {
         return $this->dataCreazione;
@@ -104,18 +128,22 @@ class Recensione
     {
         $this->id = $id;
     }
+
     public function setCommento($commento)
     {
         $this->commento = $commento;
     }
+
     public function setValutazione($valutazione)
     {
         $this->valutazione = $valutazione;
     }
+
     public function setNomeUtente($nomeUtente)
     {
         $this->nomeUtente = $nomeUtente;
     }
+
     public function setDataCreazione($dataCreazione)
     {
         $this->dataCreazione = $dataCreazione;
