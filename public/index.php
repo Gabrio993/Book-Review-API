@@ -15,7 +15,8 @@ $controller = new AutoreController();
 echo "<pre>";
 $controller->getAllAuthors();
 echo "</pre>";
-/*------------Trova utente per id------------*/
+
+/*------------Trova Autore per id------------*/
 echo "Ottenimento autore in base all'ID inserito";
 $controller2 = new AutoreController();
 echo "<pre>";
@@ -23,9 +24,10 @@ $controller2->getAuthorsById(5);
 echo "</pre>";
 
 /*------------Inserimento nuovo autore------------*/
-// echo "Aggiungo un nuovo autore ";
-// $controller3 = new AutoreController();
-// echo "<pre>";
-// $controller3->createAuthors(6,"Dante","Alighieri","La divina Commedia","1265-09-21");
-// echo "</pre>";
+echo "Aggiungo un nuovo autore ";
+$controller3 = new AutoreController();
+echo "<pre>";
+$controller3->createAuthors(6,"Khaled","Hosseini","1965-03-04");
+echo "</pre>";
+
 

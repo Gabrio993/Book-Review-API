@@ -41,6 +41,8 @@ class AutoreDAO {
             $stmt = $this->db->prepare("INSERT INTO autore (id_autore,nome,cognome,data_nascita) VALUES (:id_autore,:nome,:cognome,:data_nascita)");
             $stmt->execute(["id_autore" => $id_autore,"nome" => $nome,"cognome" => $cognome, "data_nascita" => $data_nascita]);
           }
+
+        
   
   
 }

@@ -27,10 +27,13 @@ class AutoreController
     }
 
     public function createAuthors($id_autore, $nome, $cognome, $data_nascita){
+        //conversione della data nel formato corretto
+        $data = strtotime($data_nascita);
+        $new_data_nascita = date("Y-m-d",$data);
        // crea un'istanza della classe Autore
        $autore = new AutoreDAO();
        //Creo il nuovo autore
-       $autore->createAuthors($id_autore, $nome, $cognome, $data_nascita);
+       $autore->createAuthors($id_autore, $nome, $cognome, $new_data_nascita);
     }
 
 }
