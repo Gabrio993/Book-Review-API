@@ -2,7 +2,7 @@
 
 ## Versione 1.2
 
-### Data di rilascio: 2023-02-22 14:30:00
+### Data di rilascio: 27/09/2024
 
 ### Descrizione degli aggiornamenti:
 
@@ -27,6 +27,7 @@
 
 ### Cronologia degli aggiornamenti:
 
-* 2023-02-20 10:00:00: creazione del file `config.php` e del file `index.php`.
-* 2023-02-22 14:30:00: aggiunta di validazione per i valori di input nelle funzioni `createRecensione` e `updateRecensione`.
-* 2023-02-22 14:30:00: creazione del file `README.md` per documentare le modifiche al codice.
+* 20/09/2024: creazione del file `config.php` e del file `index.php`.
+* 27/09/2024: aggiunta di validazione per i valori di input nelle funzioni `createRecensione` e `updateRecensione`.
+* 27/09/2024: creazione del file `README.md` per documentare le modifiche al codice.
+* 27/09/2024: aggiustata connessione al db
