@@ -2,6 +2,7 @@
 
 require_once "../vendor/autoload.php"; // Inclusione dell'autoloader di Composer
 require_once "../app/models/Libro.php"; // Inclusione del model 
+require_once "../app/models/LibroDAO.php"; // Inclusione del model DAO
 require_once "../app/controllers/LibroController.php"; // Inclusione del controller 
 require_once "../config/Database.php"; // Inclusione della connessione al db
 
