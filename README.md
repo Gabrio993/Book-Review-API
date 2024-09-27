@@ -33,3 +33,4 @@
 * 27/09/2024: aggiustata connessione al db
 * 27/09/2024: aggiunto commento per aggiornare la recensione
 * 27/09/2024: aggiunto db_book per Recensione
+* 27/09/2024: creata connessione con DAO
