@@ -1,42 +1,13 @@
 <?php
 
-require_once "../vendor/autoload.php"; // Inclusione dell'autoloader di Composer
-require_once "../app/models/Libro.php"; // Inclusione del model 
-require_once "../app/models/LibroDAO.php"; // Inclusione del model DAO
-require_once "../app/controllers/LibroController.php"; // Inclusione del controller 
-require_once "../config/Database.php"; // Inclusione della connessione al db
+// Questo file è il punto di ingresso principale per tutte le richieste.
+// È il file che sarà richiamato dal server web (es. Apache, Nginx).
 
+// Includi l'autoloader di Composer per gestire le librerie esterne (es. FastRoute)
+require_once '../vendor/autoload.php';
 
-// Testing
+// Includi il file Router che gestirà il routing delle richieste
+require_once '../app/router.php';
 
-/*------------Ottieni tutti i libri------------*/
-echo "Ottieni tutti i libri";
-$controller = new LibroController();
-echo "<pre>";
-$controller->getBooks();
-echo "</pre>";
-/*------------Trova libro per id------------*/
-echo "Trova libro per id";
-$controller2 = new LibroController();
-echo "<pre>";
-$controller2->showIdBook(4);
-echo "</pre>";
-/*------------Trova Libro per genere------------*/
-echo "Trova libri per genere";
-$controller3 = new LibroController();
-echo "<pre>";
-$controller3->showGenreBook("Politico");
-echo "</pre>";
-/*------------Crea un nuovo libro------------*/
-// echo "Crea un nuovo libro";
-// $controller4 = new LibroController();
-// echo "<pre>";
-// $controller4->create("Zorro", 4, 1980, "Storico", 1783434523893);
-// echo "</pre>";
-/*------------ Aggiorna un libro------------*/
-// ThunderClient o Postman per verifica
-/*------------Elimina un libro--------------*/
-$controller5 = new LibroController();
-echo "<pre>";
-$controller5->deleteIdBook(12);
-echo "</pre>";
+// Avvia il routing
+route();
