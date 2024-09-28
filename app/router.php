@@ -7,6 +7,7 @@ require_once "../config/Database.php";
 require_once "../app/models/Libro.php";
 require_once "../app/models/LibroDAO.php";
 require_once "../app/controllers/LibroController.php";
+require_once "../app/controllers/VistaController.php";
 
 function route()
 {
@@ -16,12 +17,16 @@ function route()
         // Definiamo le rotte per le operazione CRUD 
         $r->addRoute("GET", "/book-review-api/libri", ["LibroController", "getBooks"]);  // Elenca tutti i libri
         $r->addRoute('GET', '/book-review-api/libri/{id:\d+}', ['LibroController', "showIdBook"]); // Mostra un singolo libro (id)
-        $r->addRoute('GET', '/book-review-api/libri/genre', ['LibroController', "showGenreBook"]); // Mostra libri in base al genere
+        $r->addRoute('GET', '/book-review-api/libri/genre/{genere}', ['LibroController', "showGenreBook"]); // Mostra libri in base al genere
         $r->addRoute('PUT', '/book-review-api/libri/{id:\d+}', ['LibroController', "update"]); // Aggiorna un libro passando l'id
         $r->addRoute('POST', '/book-review-api/libri', ['LibroController', "create"]);  // Crea un nuovo libro
         $r->addRoute('DELETE', '/book-review-api/libri/{id:\d+}', ['LibroController', "deleteIdBook"]); // Cancella un libro (id)
 
+        // Nuova rotta per il VistaController
+        $r->addRoute('GET', '/book-review-api/vista', ['VistaController', 'showVista']); // Associa la rotta al metodo show di VistaController
     });
+
+
 
     // Ottieni il metodo HTTP e l'URI della richiesta corrente
     $httpMethod = $_SERVER['REQUEST_METHOD'];
