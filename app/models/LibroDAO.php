@@ -1,7 +1,5 @@
 <?php
 
-
-
 class LibroDAO
 {
     // Proprietà del libro
