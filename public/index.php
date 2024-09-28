@@ -34,5 +34,9 @@ echo "</pre>";
 // $controller4->create("Zorro", 4, 1980, "Storico", 1783434523893);
 // echo "</pre>";
 /*------------ Aggiorna un libro------------*/
- // ThunderClient o Postman per verifica
+// ThunderClient o Postman per verifica
 /*------------Elimina un libro--------------*/
+$controller5 = new LibroController();
+echo "<pre>";
+$controller5->deleteIdBook(12);
+echo "</pre>";
