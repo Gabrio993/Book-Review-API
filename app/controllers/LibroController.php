@@ -15,7 +15,7 @@ class LibroController
     {
         // Crei un'istanza della classe Libro
         $libro = new LibroDAO();
-        // Cerchi il libro tramite id e popoli le proprietà dell'oggetto
+        // Cerchi il libro tramite id
         $libro_data = $libro->findIdBook($id);
 
         if ($libro_data) {
@@ -46,9 +46,9 @@ class LibroController
         $nuovoLibro = $libro->createBook($titolo, $id_autore, $annoPubblicazione, $genere, $isbn, $id_casa_editrice);
 
         if ($nuovoLibro) {
-            echo "Libro creato con successo con ID: $nuovoLibro ";
+            echo json_encode(["message" => "Libro creato con successo con ID:$nuovoLibro"], JSON_PRETTY_PRINT);
         } else {
-            echo "Errore nella creazione del libro.";
+            echo json_encode(["message" => "Errore nella creazione del libro."], JSON_PRETTY_PRINT);
         }
     }
 
@@ -70,13 +70,25 @@ class LibroController
         $result = $libro->updateBook($id, $titolo, $id_autore, $annoPubblicazione, $genere, $isbn, $id_casa_editrice);
 
         if ($result) {
-            echo json_encode(["message" => "Libro aggiornato con successo"]);
+            echo json_encode(["message" => "Libro aggiornato con successo"], JSON_PRETTY_PRINT);
         } else {
             echo json_encode(["message" => "Errore nell'aggiornamento del libro o nessun campo modificato"], JSON_PRETTY_PRINT);
         }
     }
+    //Metodo per cancellare un libro (DELETE/libro/{id})
+    public function deleteIdBook($id)
+    {
 
-    /* TODO: 
+        // Creo un istanza della classe LibroDAO
+        $libro = new LibroDAO();
+        // Chiamo il metodo deleteBook passando l'id
+        $result = $libro->deleteBook($id);
 
-    - Metodo per cancellare un libro (DELETE/libro/{id})*/
+        // Output
+        if ($result) {
+            json_encode(["message" => "Libro cancellato con successo"], JSON_PRETTY_PRINT);
+        } else {
+            json_encode(["message" => "Errore nella cancellazione del libro"], JSON_PRETTY_PRINT);
+        }
+    }
 }
