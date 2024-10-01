@@ -135,3 +135,38 @@
             </div>
         </div>
     </div>
+
+    <!-- Inclusione script per javascript dinamico con Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Script principale dell'applicativo -->
+    <script>
+        // Funzione per caricare i libri nella tabella
+        async function loadBooks() {
+            try {
+                const response = await fetch('/book-review-api/libri');
+                if (!response.ok) throw new Error('Errore nel caricamento dei libri');
+                const books = await response.json();
+                const tableBody = document.querySelector("#bookTable tbody");
+                tableBody.innerHTML = ""; // Svuota la tabella prima di popolarla 
+                books.forEach(book => {
+                    const row = `<tr>
+                        <td>${book.id_libro}</td>
+                        <td>${book.titolo}</td>
+                        <td>${book.id_autore}</td>
+                        <td>${book.anno_pubblicazione}</td>
+                        <td>${book.genere}</td>
+                        <td>${book.isbn}</td>
+                        <td>${book.id_casa_editrice}</td>
+                        <td>
+                            <button class="btn btn-danger" onclick="deleteBook(${book.id_libro})">Elimina</button>
+                            <button class="btn btn-warning" onclick="editBook(${book.id_libro})">Modifica</button>
+                        </td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            } catch (error) {
+                console.error(error);
+                alert('Si è verificato un errore: ' + error.message);
+            }
+        }
