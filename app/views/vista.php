@@ -15,7 +15,7 @@
     <!-- Sezione per la creazione di un nuovo libro -->
     <h2 class="mb-3">Crea un nuovo libro</h2>
     <form id="createBookForm">
-        <div class="row">
+        <div class="row mb-2">
             <div class="col">
                 <label class="form-label" for="titolo">Titolo:</label>
                 <input class="form-control" type="text" id="titolo" name="titolo" required>
@@ -33,11 +33,11 @@
 
         <div class="row">
             <div class="col">
-                <label for="genere">Genere:</label>
+                <label class="form-label" for="genere">Genere:</label>
                 <input class="form-control" type="text" id="genere" name="genere" required>
             </div>
             <div class="col">
-                <label class="form-label" for="isbn">ISBN:</label>
+                <label class="form-label" for="isbn">Isbn:</label>
                 <input class="form-control" type="text" id="isbn" name="isbn" required>
             </div>
             <div class="col">
