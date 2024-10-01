@@ -212,3 +212,20 @@
             const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
             confirmModal.show(); // Mostra la modale di conferma
         }
+
+        // Aggiungi un listener al pulsante di conferma
+        document.getElementById('confirmButton').addEventListener('click', async function() {
+            try {
+                const response = await fetch(`/book-review-api-prove/libri/${bookIdToDelete}`, {
+                    method: 'DELETE'
+                });
+                if (!response.ok) throw new Error('Errore durante l\'eliminazione del libro');
+                loadBooks(); // Ricarica la lista dei libri
+                bookIdToDelete = null; // Resetta l'ID del libro da eliminare
+                const confirmModal = bootstrap.Modal.getInstance(document.getElementById('confirmModal'));
+                confirmModal.hide(); // Nascondi la modale
+            } catch (error) {
+                console.error(error);
+                alert('Si è verificato un errore: ' + error.message);
+            }
+        });
