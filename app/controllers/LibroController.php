@@ -91,4 +91,12 @@ class LibroController
             json_encode(["message" => "Errore nella cancellazione del libro"], JSON_PRETTY_PRINT);
         }
     }
+
+    // Metodo per passare i dati alla vista
+    public function getBooksForView()
+    {
+        $libroDAO = new LibroDAO();
+        $libri = $libroDAO->allBooks();
+        require __DIR__ . '/../views/vista.php'; // il file vista
+    }
 }
