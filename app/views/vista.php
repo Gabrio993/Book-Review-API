@@ -203,3 +203,12 @@
                 }
             }.bind(this); // Bind del contesto di this riferito al modulo
         });
+
+        // Eliminazione di un libro
+        let bookIdToDelete = null; // Variabile per tenere traccia dell'ID del libro da eliminare
+
+        async function deleteBook(id) {
+            bookIdToDelete = id; // Memorizza l'ID del libro da eliminare
+            const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+            confirmModal.show(); // Mostra la modale di conferma
+        }
