@@ -229,3 +229,23 @@
                 alert('Si è verificato un errore: ' + error.message);
             }
         });
+
+        // Modifica di un libro (precompila il form di aggiornamento)
+        async function editBook(id) {
+            document.getElementById('updateBookForm').style.display = 'block';
+            try {
+                const response = await fetch(`/book-review-api-prove/libri/${id}`);
+                if (!response.ok) throw new Error('Errore durante il recupero del libro');
+                const book = await response.json();
+                document.getElementById('updateBookId').value = book.id_libro;
+                document.getElementById('updateTitolo').value = book.titolo;
+                document.getElementById('updateAutore').value = book.id_autore;
+                document.getElementById('updateAnno').value = book.anno_pubblicazione;
+                document.getElementById('updateGenere').value = book.genere;
+                document.getElementById('updateIsbn').value = book.isbn;
+                document.getElementById('updateCasaEditrice').value = book.id_casa_editrice;
+            } catch (error) {
+                console.error(error);
+                alert('Si è verificato un errore: ' + error.message);
+            }
+        }
