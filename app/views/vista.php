@@ -249,3 +249,39 @@
                 alert('Si è verificato un errore: ' + error.message);
             }
         }
+
+        // Aggiornamento di un libro
+        document.getElementById("updateBookForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const formData = new FormData(this); //formData è un oggetto built in di js che consente di costruire un insieme di coppie chiave/valore che rappresentano i dati di un form
+            const data = Object.fromEntries(formData.entries()); // formData.entries(): Questo metodo restituisce un iteratore che contiene tutte le coppie chiave/valore nell'oggetto FormData. Ogni elemento dell'iteratore è una coppia [chiave, valore].
+            // Object.fromEntries(): Questo metodo, converte l'iteratore restituito da formData.entries() in un oggetto JavaScript.
+
+            // Mostra la modale di conferma per l'aggiornamento
+            const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+            confirmModal.show();
+
+            // Aggiungi un listener al pulsante di conferma
+            document.getElementById('confirmButton').onclick = async function() {
+                // Effettua richiesta di aggiornamento
+                try {
+                    const response = await fetch(`/book-review-api-prove/libri/${data.id_libro}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    // Controllo per la risposta
+                    if (!response.ok) throw new Error('Errore durante l\'aggiornamento del libro');
+                    this.reset(); // Resetta il form
+                    loadBooks(); // Ricarica i libri
+                    confirmModal.hide(); // Nascondi la modale
+
+                } catch (error) {
+                    console.error(error);
+                    alert('Si è verificato un errore: ' + error.message);
+                }
+
+            }.bind(this); // Bind del contesto di this riferito al modulo. 
+        });
