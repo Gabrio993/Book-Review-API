@@ -285,3 +285,11 @@
 
             }.bind(this); // Bind del contesto di this riferito al modulo. 
         });
+
+
+        // Carica i libri al caricamento della pagina
+        loadBooks();
+    </script>
+</body>
+
+</html>
