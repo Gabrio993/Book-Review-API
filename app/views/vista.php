@@ -170,3 +170,36 @@
                 alert('Si è verificato un errore: ' + error.message);
             }
         }
+
+        // Creazione di un nuovo libro
+        document.getElementById("createBookForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const formData = new FormData(this); //formData è un oggetto built in di js che consente di costruire un insieme di coppie chiave/valore che rappresentano i dati di un form
+            const data = Object.fromEntries(formData.entries()); // formData.entries(): Questo metodo restituisce un iteratore che contiene tutte le coppie chiave/valore nell'oggetto FormData. Ogni elemento dell'iteratore è una coppia [chiave, valore].
+            // Object.fromEntries(): Questo metodo, converte l'iteratore restituito da formData.entries() in un oggetto JavaScript.
+
+            // Mostra la modale di conferma per la creazione
+            const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
+            confirmModal.show();
+
+            // Aggiungi un listener al pulsante di conferma
+            document.getElementById('confirmButton').onclick = async function() {
+                try {
+                    const response = await fetch('/book-review-api-prove/libri', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    if (!response.ok) throw new Error('Errore durante la creazione del libro');
+
+                    this.reset(); // Resetta il form
+                    loadBooks(); // Ricarica i libri
+                    confirmModal.hide(); // Nascondi la modale
+                } catch (error) {
+                    console.error(error);
+                    alert('Si è verificato un errore: ' + error.message);
+                }
+            }.bind(this); // Bind del contesto di this riferito al modulo
+        });
