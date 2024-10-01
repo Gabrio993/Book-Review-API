@@ -23,7 +23,7 @@ function route()
         $r->addRoute('DELETE', '/book-review-api/libri/{id:\d+}', ['LibroController', "deleteIdBook"]); // Cancella un libro (id)
 
         // Nuova rotta per il VistaController
-        $r->addRoute('GET', '/book-review-api/vista', ['VistaController', 'showVista']); // Associa la rotta al metodo show di VistaController
+        $r->addRoute('GET', '/book-review-api/vista', ['VistaController', 'showBooksView']); // Mostra la vista dei libri
     });
 
 
