@@ -3,9 +3,10 @@
 class VistaController
 {
     // Metodo per visualizzare la pagina 'vista.php'
-    public function showVista()
+    public function showBooksView()
     {
-        // Includi la vista. Assicurati che il percorso sia corretto
-        require __DIR__ . '/../views/vista.php';
+        // Includi il controller dei libri per ottenere i dati
+        $libroController = new LibroController();
+        $libroController->getBooksForView(); // Carica i dati nella vista
     }
 }
