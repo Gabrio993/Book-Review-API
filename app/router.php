@@ -54,6 +54,7 @@ function route()
             $handler = $routeInfo[1];  // Esempio: ['LibriController', 'index']
             $vars = $routeInfo[2];  // Variabili passate nella rotta (es. ID o altri parametri)
 
+            header("Content-Type: application/json");
             // Istanzia il controller e chiama il metodo specifico
             $controller = new $handler[0];
             call_user_func_array([$controller, $handler[1]], $vars);
