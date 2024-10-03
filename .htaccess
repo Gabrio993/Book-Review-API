@@ -1,12 +1,9 @@
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 
-	RewriteCond %{REQUEST_URI} ^/book-review-api/$ [NC]
+ 	RewriteCond %{REQUEST_URI} ^/book-review-api/?$ [NC] 
 	RewriteRule ^$ app/views/vista.php [L]
-
-	# RewriteCond %{REQUEST_URI} ^/book-review-api/?$ [NC] 
-	# RewriteRule ^$ public/index.php [L]
-
+	
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteRule . public/$1 [L,QSA]
