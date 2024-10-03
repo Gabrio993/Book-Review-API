@@ -5,7 +5,7 @@ class LibroController
     // Metodo per elencare tutti i libri (GET /libro)
     public function getBooks()
     {
-        $libro = new LibroDAO(); // Crei un'istanza della classe Libro
+        $libro = new LibroDAO(); // Crei un'istanza della classe LibroDAO
         $libri = $libro->allBooks(); // Ottieni tutti i libri dal database
         echo json_encode($libri, JSON_PRETTY_PRINT); // Restituisci i risultati come JSON
     }
@@ -40,17 +40,29 @@ class LibroController
     }
 
     // Metodo per creare un nuovo libro
-    public function create($titolo, $id_autore, $annoPubblicazione, $genere, $isbn, $id_casa_editrice)
+    public function create()
     {
+        // Leggi il corpo della richiesta
+        $data = json_decode(file_get_contents('php://input'), true);
+
+        // Accedi ai dati decodificati
+        $titolo = $data['titolo'] ?? null;
+        $id_autore = $data['id_autore'] ?? null;
+        $annoPubblicazione = $data['anno_pubblicazione'] ?? null;
+        $genere = $data['genere'] ?? null;
+        $isbn = $data['isbn'] ?? null;
+        $id_casa_editrice = $data['id_casa_editrice'] ?? null;
+
         $libro = new LibroDAO();
         $nuovoLibro = $libro->createBook($titolo, $id_autore, $annoPubblicazione, $genere, $isbn, $id_casa_editrice);
 
         if ($nuovoLibro) {
-            echo json_encode(["message" => "Libro creato con successo con ID:$nuovoLibro"], JSON_PRETTY_PRINT);
+            echo json_encode(["message" => "Libro creato con successo con ID: $nuovoLibro"], JSON_PRETTY_PRINT);
         } else {
             echo json_encode(["message" => "Errore nella creazione del libro."], JSON_PRETTY_PRINT);
         }
     }
+
 
     //- Metodo per aggiornare un libro (PUT/libro/{id})
     public function update($id)
