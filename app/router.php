@@ -6,7 +6,10 @@ require_once "../vendor/autoload.php";
 require_once "../config/Database.php";
 require_once "../app/models/Libro.php";
 require_once "../app/models/LibroDAO.php";
+require_once "../app/models/Utente.php";
+require_once "../app/models/UtenteDAO.php";
 require_once "../app/controllers/LibroController.php";
+require_once "../app/controllers/UtenteController.php";
 require_once "../app/controllers/VistaController.php";
 
 function route()
@@ -15,12 +18,22 @@ function route()
     $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r) {
 
         // Definiamo le rotte per le operazione CRUD 
+        // Libri
         $r->addRoute("GET", "/book-review-api/libri", ["LibroController", "getBooks"]);  // Elenca tutti i libri
         $r->addRoute('GET', '/book-review-api/libri/{id:\d+}', ['LibroController', "showIdBook"]); // Mostra un singolo libro (id)
         $r->addRoute('GET', '/book-review-api/libri/genre/{genere}', ['LibroController', "showGenreBook"]); // Mostra libri in base al genere
         $r->addRoute('PUT', '/book-review-api/libri/{id:\d+}', ['LibroController', "update"]); // Aggiorna un libro passando l'id
         $r->addRoute('POST', '/book-review-api/libri', ['LibroController', "create"]);  // Crea un nuovo libro
         $r->addRoute('DELETE', '/book-review-api/libri/{id:\d+}', ['LibroController', "deleteIdBook"]); // Cancella un libro (id)
+        //Utenti
+        $r->addRoute("GET", "/book-review-api/utenti", ["UtenteController", "getAllUsers"]);  // Elenca tutti gli utenti
+        $r->addRoute("GET", "/book-review-api/utenti/{id_utente:\d+}", ["UtenteController", "showUserId"]);  // Mostra utente (id)
+        $r->addRoute("GET", "/book-review-api/utenti/username/{username}", ["UtenteController", "showUsername"]);  // Mostra utente(username)
+        $r->addRoute("GET", "/book-review-api/utenti/email/{email}", ["UtenteController", "showEmail"]);  // Mostra utente(email)
+        $r->addRoute("PUT", "/book-review-api/utenti/{id_utente:\d+}", ["UtenteController", "update"]);  // Modifica utente(id)
+        $r->addRoute("POST", "/book-review-api/utenti", ["UtenteController", "create"]);  // Crea un nuovo utente
+        $r->addRoute("DELETE", "/book-review-api/utenti/{id_utente:\d+}", ["UtenteController", "deleteIdUser"]);  // Crea un nuovo utente
+
 
         // Nuova rotta per il VistaController
         $r->addRoute('GET', '/book-review-api/vista', ['VistaController', 'showBooksView']); // Mostra la vista dei libri
