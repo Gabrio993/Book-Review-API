@@ -33,10 +33,10 @@ echo "<pre>";
 // try {
 //     // Crea un'istanza del DAO
 //     $recensioneDAO = new RecensioneDAO();
-    
+
 //     // Crea una nuova recensione
 //     $recensioneDAO->createRecensione(5, 'Nome Utente 2', date('Y-m-d H:i:s'));
-    
+
 //     echo 'Recensione creata con successo!';
 // } catch (Exception $e) {
 //     echo 'Errore durante la creazione della recensione: ' . $e->getMessage();
@@ -73,5 +73,3 @@ echo "<pre>";
 // } catch (Exception $e) {
 //     echo 'Errore durante la cancellazione della recensione: ' . $e->getMessage();
 // }
-
-?>

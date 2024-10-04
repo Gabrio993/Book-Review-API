@@ -21,8 +21,10 @@ class Recensione
     }
 }
 
-class RecensioneValidator {
-    public static function validate($data) {
+class RecensioneValidator
+{
+    public static function validate($data)
+    {
         $errors = [];
 
         if (empty($data['commento'])) {

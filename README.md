@@ -33,4 +33,3 @@
 
 ### DA RIVEDERE
 
-* tua mamma

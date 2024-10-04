@@ -27,14 +27,14 @@ class RecensioneController
 
 
     // Metodo per creare una nuova recensione (POST /recensione)
-public function createRecensione($valutazione, $nomeUtente, $dataCreazione)
-{
-    $recensione = new RecensioneDAO();
-    $recensione->createRecensione($valutazione, $nomeUtente, $dataCreazione);
-    echo json_encode(["message" => "Recensione creata con successo"], JSON_PRETTY_PRINT);
-}
+    public function createRecensione($valutazione, $nomeUtente, $dataCreazione)
+    {
+        $recensione = new RecensioneDAO();
+        $recensione->createRecensione($valutazione, $nomeUtente, $dataCreazione);
+        echo json_encode(["message" => "Recensione creata con successo"], JSON_PRETTY_PRINT);
+    }
 
-    
+
 
     // Metodo per aggiornare una recensione (PUT /recensione/{id})
     public function updateRecensione($id, $commento, $valutazione, $nomeUtente, $dataCreazione)
@@ -45,16 +45,15 @@ public function createRecensione($valutazione, $nomeUtente, $dataCreazione)
     }
 
     // Metodo per cancellare una recensione (DELETE /recensione/{id})
-public function deleteRecensione($id)
-{
-    $recensioneDAO = new RecensioneDAO();
-    try {
-        $recensioneDAO->deleteRecensione($id);
-        echo json_encode(["message" => "Recensione cancellata con successo"], JSON_PRETTY_PRINT);
-    } catch (Exception $e) {
-        http_response_code(404);
-        echo json_encode(["message" => "Errore durante la cancellazione della recensione: " . $e->getMessage()], JSON_PRETTY_PRINT);
+    public function deleteRecensione($id)
+    {
+        $recensioneDAO = new RecensioneDAO();
+        try {
+            $recensioneDAO->deleteRecensione($id);
+            echo json_encode(["message" => "Recensione cancellata con successo"], JSON_PRETTY_PRINT);
+        } catch (Exception $e) {
+            http_response_code(404);
+            echo json_encode(["message" => "Errore durante la cancellazione della recensione: " . $e->getMessage()], JSON_PRETTY_PRINT);
+        }
     }
-}
-
 }
