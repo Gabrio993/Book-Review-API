@@ -32,17 +32,7 @@ INSERT INTO `autore` (`id_autore`, `nome`, `cognome`, `data_nascita`) VALUES
 (4, 'Alberto', 'Moravia', '1907-11-28'),
 (5, 'Cesare', 'Pavese', '1908-09-09');
 
---
--- Dump dei dati per la tabella `autori_libri`
---
 
-INSERT INTO `autori_libri` (`id_autore`, `id_libro`) VALUES
-(1, 1),
-(1, 6),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5);
 
 --
 -- Dump dei dati per la tabella `casa_editrice`
@@ -68,16 +58,18 @@ INSERT INTO `libro` (`id_libro`, `isbn`, `titolo`, `id_autore`, `anno_pubblicazi
 (6, NULL, 'Il sentiero dei nidi di ragno', 1, NULL, NULL, 1);
 
 --
--- Dump dei dati per la tabella `recensione`
+-- Dump dei dati per la tabella `autori_libri`
 --
 
-INSERT INTO `recensione` (`id_recensione`, `id_libro`, `id_utente`, `recensione`, `data`) VALUES
-(1, 1, 1, 'Un libro avvincente e ben scritto', '0000-00-00'),
-(2, 2, 2, 'Un classico della letteratura italiana', '0000-00-00'),
-(3, 3, 3, 'Un libro difficile ma interessante', '0000-00-00'),
-(4, 4, 4, 'Un libro che mi ha deluso', '0000-00-00'),
-(5, 5, 5, 'Un libro che mi ha fatto riflettere', '0000-00-00'),
-(6, 6, 1, 'Un libro che mi ha fatto venire voglia di leggere di più', '0000-00-00');
+INSERT INTO `autori_libri` (`id_autore`, `id_libro`) VALUES
+(1, 1),
+(1, 6),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5);
+
+
 
 --
 -- Dump dei dati per la tabella `utente`
@@ -89,6 +81,18 @@ INSERT INTO `utente` (`id_utente`, `username`, `email`, `password`) VALUES
 (3, 'utente3', 'utente3@example.com', 'password3'),
 (4, 'utente4', 'utente4@example.com', 'password4'),
 (5, 'utente5', 'utente5@example.com', 'password5');
+
+--
+-- Dump dei dati per la tabella `recensione`
+--
+
+INSERT INTO `recensione` (`id_recensione`, `id_libro`, `id_utente`, `recensione`, `data`) VALUES
+(1, 1, 1, 'Un libro avvincente e ben scritto', '0000-00-00'),
+(2, 2, 2, 'Un classico della letteratura italiana', '0000-00-00'),
+(3, 3, 3, 'Un libro difficile ma interessante', '0000-00-00'),
+(4, 4, 4, 'Un libro che mi ha deluso', '0000-00-00'),
+(5, 5, 5, 'Un libro che mi ha fatto riflettere', '0000-00-00'),
+(6, 6, 1, 'Un libro che mi ha fatto venire voglia di leggere di più', '0000-00-00');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
