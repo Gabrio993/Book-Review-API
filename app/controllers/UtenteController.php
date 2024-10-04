@@ -37,7 +37,6 @@ class UtenteController
     } else {
       echo json_encode(["message" => "Username non trovato"], JSON_PRETTY_PRINT); // Se non trovato
     }
-
   }
 
   public function showEmail($email)
@@ -52,7 +51,6 @@ class UtenteController
     } else {
       echo json_encode(["message" => "Email non trovata"], JSON_PRETTY_PRINT); // Se non trovato
     }
-
   }
 
   // Metodo per creare un nuovo utente (POST /utente)
@@ -73,7 +71,6 @@ class UtenteController
     } else {
       echo json_encode(["message" => "Errore nella creazione dell'utente."], JSON_PRETTY_PRINT);
     }
-
   }
 
   //- Metodo per aggiornare un utente(PUT/libro/{id})
@@ -113,7 +110,4 @@ class UtenteController
       json_encode(["message" => "Errore nella cancellazione dell'utente"], JSON_PRETTY_PRINT);
     }
   }
-
-
-
 }
