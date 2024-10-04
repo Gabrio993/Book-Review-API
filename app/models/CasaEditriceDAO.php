@@ -1,7 +1,7 @@
 <?php
 
-include_once '../../config/Database.php';
-include_once './CasaEditrice.php';
+include_once '../config/Database.php';
+include_once 'CasaEditrice.php';
 
 class CasaEditriceDAO {
 
