@@ -257,6 +257,7 @@
             const data = Object.fromEntries(formData.entries()); // formData.entries(): Questo metodo restituisce un iteratore che contiene tutte le coppie chiave/valore nell'oggetto FormData. Ogni elemento dell'iteratore è una coppia [chiave, valore].
             // Object.fromEntries(): Questo metodo, converte l'iteratore restituito da formData.entries() in un oggetto JavaScript.
 
+
             // Mostra la modale di conferma per l'aggiornamento
             const confirmModal = new bootstrap.Modal(document.getElementById('confirmModal'));
             confirmModal.show();
@@ -282,8 +283,7 @@
                     console.error(error);
                     alert('Si è verificato un errore: ' + error.message);
                 }
-
-            }.bind(this); // Bind del contesto di this riferito al modulo. 
+            }.bind(this); // Binding del contesto di this
         });
 
 
