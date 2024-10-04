@@ -39,8 +39,6 @@ function route()
         $r->addRoute('GET', '/book-review-api/vista', ['VistaController', 'showBooksView']); // Mostra la vista dei libri
     });
 
-
-
     // Ottieni il metodo HTTP e l'URI della richiesta corrente
     $httpMethod = $_SERVER['REQUEST_METHOD'];
     $uri = $_SERVER['REQUEST_URI'];
