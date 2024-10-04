@@ -18,4 +18,3 @@ class CasaEditrice {
     $this->paese = $paese;
   }
 }
-
