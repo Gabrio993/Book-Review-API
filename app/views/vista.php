@@ -185,7 +185,7 @@
             // Aggiungi un listener al pulsante di conferma
             document.getElementById('confirmButton').onclick = async function() {
                 try {
-                    const response = await fetch('/book-review-api-prove/libri', {
+                    const response = await fetch('/book-review-api/libri', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -216,7 +216,7 @@
         // Aggiungi un listener al pulsante di conferma
         document.getElementById('confirmButton').addEventListener('click', async function() {
             try {
-                const response = await fetch(`/book-review-api-prove/libri/${bookIdToDelete}`, {
+                const response = await fetch(`/book-review-api/libri/${bookIdToDelete}`, {
                     method: 'DELETE'
                 });
                 if (!response.ok) throw new Error('Errore durante l\'eliminazione del libro');
@@ -234,7 +234,7 @@
         async function editBook(id) {
             document.getElementById('updateBookForm').style.display = 'block';
             try {
-                const response = await fetch(`/book-review-api-prove/libri/${id}`);
+                const response = await fetch(`/book-review-api/libri/${id}`);
                 if (!response.ok) throw new Error('Errore durante il recupero del libro');
                 const book = await response.json();
                 document.getElementById('updateBookId').value = book.id_libro;
@@ -265,7 +265,7 @@
             document.getElementById('confirmButton').onclick = async function() {
                 // Effettua richiesta di aggiornamento
                 try {
-                    const response = await fetch(`/book-review-api-prove/libri/${data.id_libro}`, {
+                    const response = await fetch(`/book-review-api/libri/${data.id_libro}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'
