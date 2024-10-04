@@ -57,26 +57,6 @@ class CasaEditriceDAO {
       }
     }
 
-    // metodo per recuperare le case editrici in base all'anno di fondazione
-  public function getCasaEditriceByAnno($anno_fondazione)
-  {
-
-    $stmt = $this->db->prepare("SELECT * FROM casa_editrice WHERE anno_fondazione = :anno_fondazione"); //query per ottenere tutte le case editrici in base all'anno di fondazione
-    $stmt->execute(["anno_fondazione" => $anno_fondazione]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC); //restituisce i risultati in un array associativo
-  }
-
-  // metodo per recuperare le case editrici in base al paese
-  public function getCasaEditriceByPaese($paese)
-  {
-
-    $stmt = $this->db->prepare("SELECT * FROM casa_editrice WHERE paese = :paese"); //query per ottenere tutte le case editrici in base al paese
-    $stmt->execute(["paese" => $paese]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC); //restituisce i risultati in un array associativo
-  }
-
-  
-
   // metodo per aggiornare una casa editrice
   public function updateCasaEditrice($id_casa_editrice, $nome = null, $anno_fondazione = null, $paese = null)
   {
@@ -115,8 +95,7 @@ class CasaEditriceDAO {
   }
 
   // metodo per cancellare una casa editrice
-  public function deleteCasaEditrice($id_casa_editrice)
-  {
+  public function deleteCasaEditrice($id_casa_editrice) {
     // preparazione query
     $stmt = $this->db->prepare("DELETE FROM casa_editrice WHERE id_casa_editrice = :id_casa_editrice");
 
