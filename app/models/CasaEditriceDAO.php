@@ -37,8 +37,8 @@ class CasaEditriceDAO {
     }
 
     // metodo per creare una nuova casa editrice
-    public function createCasaEditrice($id_casa_editrice ,$nome, $anno_fondazione, $paese){
-
+    public function createCasaEditrice($nome, $anno_fondazione, $paese){
+      
       // preparazione della query per inserire una nuova casa editrice
       $stmt = $this->db->prepare("INSERT INTO casa_editrice (nome, anno_fondazione, paese) VALUES (:nome, :anno_fondazione, :paese)");
 
