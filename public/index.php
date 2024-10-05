@@ -1,33 +1,44 @@
 <?php
 
 require_once "../vendor/autoload.php"; // Inclusione dell'autoloader di Composer
-require_once "../app/models/Autore.php"; // Inclusione del model 
-require_once "../app/models/AutoreDAO.php";
+require_once "../app/models/AutoreDAO.php"; //Inclusione di AutoreDAO
 require_once "../app/controllers/Autore_controller.php"; // Inclusione del controller 
 require_once "../config/Database.php"; // Inclusione della connessione al db
 
 
-// Testing
 
-/*------------Ottieni tutti gli utenti------------*/
-echo "Ottenimento di tutti gli autori";
+/*------------Ottenimento di tutti gli autori------------*/
+echo "Elenco di tutti gli autori";
 $controller = new AutoreController();
 echo "<pre>";
 $controller->getAllAuthors();
 echo "</pre>";
 
-/*------------Trova Autore per id------------*/
-echo "Ottenimento autore in base all'ID inserito";
+// /*------------Trovare un autore dato l'ID------------*/
+echo "Autore trovato tramite l'ID";
 $controller2 = new AutoreController();
 echo "<pre>";
-$controller2->getAuthorsById(5);
+$controller2->getAuthorsById(1);
 echo "</pre>";
 
 /*------------Inserimento nuovo autore------------*/
-echo "Aggiungo un nuovo autore ";
-$controller3 = new AutoreController();
-echo "<pre>";
-$controller3->createAuthors(6,"Khaled","Hosseini","1965-03-04");
-echo "</pre>";
+// $controller3 = new AutoreController();
+// $controller3->createAuthors(1, 'Giorgio', 'Scerbanenco', '1911-09-28');
+// echo "</pre>";
+
+
+
+/*------------Rimozione di un autore------------*/
+// $controller4 = new AutoreController();
+// echo "<pre>";
+// $controller4-> deleteAuthors(6);
+// echo "</pre>";
+
+ 
+/*------------Aggiornamento di un autore------------*/
+// $controller5 = new AutoreController();
+// $controller5-> updateAuthors(1, 'Giorgio', 'Scerbanenco', '1911-09-28');
+// echo "</pre>";
+
 
 
