@@ -8,8 +8,11 @@ require_once "../app/models/Libro.php";
 require_once "../app/models/LibroDAO.php";
 require_once "../app/models/Utente.php";
 require_once "../app/models/UtenteDAO.php";
+require_once "../app/models/CasaEditrice.php";
+require_once "../app/models/CasaEditriceDAO.php";
 require_once "../app/controllers/LibroController.php";
 require_once "../app/controllers/UtenteController.php";
+require_once "../app/controllers/CasaEditriceController.php";
 require_once "../app/controllers/VistaController.php";
 
 function route()
@@ -33,6 +36,11 @@ function route()
         $r->addRoute("PUT", "/book-review-api/utenti/{id_utente:\d+}", ["UtenteController", "update"]);  // Modifica utente(id)
         $r->addRoute("POST", "/book-review-api/utenti", ["UtenteController", "create"]);  // Crea un nuovo utente
         $r->addRoute("DELETE", "/book-review-api/utenti/{id_utente:\d+}", ["UtenteController", "deleteIdUser"]);  // Crea un nuovo utente
+        // Case editrici
+        $r->addRoute("GET", "/book-review-api/casaeditrice", ["CasaEditriceController", "getAllCaseEditrici"]);  // Elenca tutte le case editrici
+        $r->addRoute("GET", '/book-review-api/casaeditrice/{id_casa_editrice:\d+}', ['CasaEditriceController', "getCasaEditriceById"]);  // Elenca casa editrice(id)
+        $r->addRoute('POST', '/book-review-api/casaeditrice', ['CasaEditriceController', "createCasaEditrice"]); // Crea una casa editrice
+
 
 
         // Nuova rotta per il VistaController
