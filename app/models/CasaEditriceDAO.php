@@ -3,59 +3,68 @@
 include_once '../config/Database.php';
 include_once 'CasaEditrice.php';
 
-class CasaEditriceDAO {
+class CasaEditriceDAO
+{
 
-    private $db;
+  private $db;
+  public $id_casa_editrice;
+  public $nome;
+  public $anno_fondazione;
+  public $paese;
 
-    public function __construct() {
-        $this->db = Database::getInstance();
+  public function __construct()
+  {
+    $this->db = Database::getInstance();
+  }
+
+  // metodo per recuperare tutte le case editrici
+  public function getAllCaseEditrici()
+  {
+
+    $stmt = $this->db->query("SELECT * FROM casa_editrice"); //query per ottenere tutte le case editrici
+    return $stmt->fetchAll(PDO::FETCH_ASSOC); //restituisce i risultati in un array associativo
+  }
+
+  // metodo per recuperare una casa editrice tramite id
+  public function getCasaEditriceById($id_casa_editrice)
+  {
+
+    $stmt = $this->db->prepare("SELECT * FROM casa_editrice WHERE id_casa_editrice = :id_casa_editrice"); //query per ottenere una casa     editrice tramite il suo id
+    $stmt->execute(["id_casa_editrice" => $id_casa_editrice]);
+    $casa_editrice = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($casa_editrice) {
+      // se troviamo una casa editrice, aggiorniamo le proprietà dell'oggetto
+      $this->id_casa_editrice = $casa_editrice['id_casa_editrice'];
+      $this->nome = $casa_editrice['nome'];
+      $this->anno_fondazione = $casa_editrice['anno_fondazione'];
+      $this->paese = $casa_editrice['paese'];
     }
 
-    // metodo per recuperare tutte le case editrici
-    public function getAllCaseEditrici(){
+    return $casa_editrice;
+  }
 
-        $stmt = $this->db->query("SELECT * FROM casa_editrice"); //query per ottenere tutte le case editrici
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); //restituisce i risultati in un array associativo
+  // metodo per creare una nuova casa editrice
+  public function createCasaEditrice($nome, $anno_fondazione, $paese)
+  {
+
+    // preparazione della query per inserire una nuova casa editrice
+    $stmt = $this->db->prepare("INSERT INTO casa_editrice (nome, anno_fondazione, paese) VALUES (:nome, :anno_fondazione, :paese)");
+
+    // esecuzione della query passando i parametri
+    $result = $stmt->execute([
+      "nome" => $nome,
+      "anno_fondazione" => $anno_fondazione,
+      "paese" => $paese
+    ]);
+
+    // controllo se l'inserimento è avvenuto con successo
+    if ($result) {
+      return $this->db->lastInsertId(); // restituisce l'ID della nuova casa editrice
+    } else {
+      return false; // inserimento non avvenuto con successo
     }
-
-    // metodo per recuperare una casa editrice tramite id
-    public function getCasaEditriceById($id_casa_editrice){
-
-      $stmt = $this->db->prepare("SELECT * FROM casa_editrice WHERE id_casa_editrice = :id_casa_editrice"); //query per ottenere una casa     editrice tramite il suo id
-      $stmt->execute(["id_casa_editrice" => $id_casa_editrice]);
-      $casa_editrice = $stmt->fetch(PDO::FETCH_ASSOC);
-
-      if ($casa_editrice) {
-        // se troviamo una casa editrice, aggiorniamo le proprietà dell'oggetto
-        $this->id_casa_editrice = $casa_editrice['id_casa_editrice'];
-        $this->nome = $casa_editrice['nome'];
-        $this->anno_fondazione = $casa_editrice['anno_fondazione'];
-        $this->paese = $casa_editrice['paese'];
-      }
-
-      return $casa_editrice;
-    }
-
-    // metodo per creare una nuova casa editrice
-    public function createCasaEditrice($nome, $anno_fondazione, $paese){
-      
-      // preparazione della query per inserire una nuova casa editrice
-      $stmt = $this->db->prepare("INSERT INTO casa_editrice (nome, anno_fondazione, paese) VALUES (:nome, :anno_fondazione, :paese)");
-
-      // esecuzione della query passando i parametri
-      $result = $stmt->execute([
-        "nome" => $nome,
-        "anno_fondazione" => $anno_fondazione,
-        "paese" => $paese
-      ]);
-
-      // controllo se l'inserimento è avvenuto con successo
-      if ($result) {
-        return $this->db->lastInsertId(); // restituisce l'ID della nuova casa editrice
-      } else {
-        return false; // inserimento non avvenuto con successo
-      }
-    }
+  }
 
   // metodo per aggiornare una casa editrice
   public function updateCasaEditrice($id_casa_editrice, $nome = null, $anno_fondazione = null, $paese = null)
@@ -95,7 +104,8 @@ class CasaEditriceDAO {
   }
 
   // metodo per cancellare una casa editrice
-  public function deleteCasaEditrice($id_casa_editrice) {
+  public function deleteCasaEditrice($id_casa_editrice)
+  {
     // preparazione query
     $stmt = $this->db->prepare("DELETE FROM casa_editrice WHERE id_casa_editrice = :id_casa_editrice");
 
