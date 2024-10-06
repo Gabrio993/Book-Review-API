@@ -10,9 +10,12 @@ require_once "../app/models/Utente.php";
 require_once "../app/models/UtenteDAO.php";
 require_once "../app/models/CasaEditrice.php";
 require_once "../app/models/CasaEditriceDAO.php";
+require_once "../app/models/Autore.php";
+require_once "../app/models/AutoreDAO.php";
 require_once "../app/controllers/LibroController.php";
 require_once "../app/controllers/UtenteController.php";
 require_once "../app/controllers/CasaEditriceController.php";
+require_once "../app/controllers/Autore_controller.php";
 require_once "../app/controllers/VistaController.php";
 
 function route()
@@ -40,6 +43,12 @@ function route()
         $r->addRoute("GET", "/book-review-api/casaeditrice", ["CasaEditriceController", "getAllCaseEditrici"]);  // Elenca tutte le case editrici
         $r->addRoute("GET", '/book-review-api/casaeditrice/{id_casa_editrice:\d+}', ['CasaEditriceController', "getCasaEditriceById"]);  // Elenca casa editrice(id)
         $r->addRoute('POST', '/book-review-api/casaeditrice', ['CasaEditriceController', "createCasaEditrice"]); // Crea una casa editrice
+        // Autori
+        $r->addRoute("GET", "/book-review-api/autori", ["AutoreController", "getAllAuthors"]);  // Elenca tutti gli autori
+        $r->addRoute('GET', '/book-review-api/autori/{id_autore:\d+}', ["AutoreController", "getAuthorsById"]); // Elenca Autore (id)
+        $r->addRoute('PUT', '/book-review-api/autori/{id_autore:\d+}', ["AutoreController", "updateAuthors"]); // Elenca Autore (id)
+        $r->addRoute('POST', '/book-review-api/autori', ["AutoreController", "createAuthors"]); // Elenca Autore (id)
+        $r->addRoute('DELETE', '/book-review-api/autori/{id_autore:\d+}', ["AutoreController", "deleteAuthors"]); // Elenca Autore (id)
 
 
 
