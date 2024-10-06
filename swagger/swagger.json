@@ -3,7 +3,7 @@
   "info": {
     "title": "Book Review API",
     "version": "1.0.0",
-    "description": "API per la gestione dei libri"
+    "description": "API per la gestione di libri"
   },
   "paths": {
     "/book-review-api/libri": {
@@ -214,6 +214,607 @@
           }
         }
       }
+    },
+    "/book-review-api/autori": {
+      "get": {
+        "summary": "Elenca tutti gli autori",
+        "responses": {
+          "200": {
+            "description": "Lista di autori",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Autore"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crea un nuovo autore",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_autore": {
+                    "type": "integer"
+                  },
+                  "nome": {
+                    "type": "string"
+                  },
+                  "cognome": {
+                    "type": "string"
+                  },
+                  "data_nascita": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                },
+                "required": ["id_autore", "nome", "cognome"]
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Autore creato con successo"
+            },
+            "400": {
+              "description": "Errore nella creazione dell'autore"
+            }
+          }
+        }
+      }
+    },
+    "/book-review-api/autori/{id_autore}": {
+      "get": {
+        "summary": "Mostra un singolo autore",
+        "parameters": [
+          {
+            "name": "id_autore",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Autore trovato",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Autore"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Autore non trovato"
+          }
+        }
+      },
+      "put": {
+        "summary": "Aggiorna un autore esistente",
+        "parameters": [
+          {
+            "name": "id_autore",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "cognome": {
+                    "type": "string"
+                  },
+                  "data_nascita": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Autore aggiornato con successo"
+            },
+            "400": {
+              "description": "Errore nell'aggiornamento dell'autore"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Cancella un autore",
+        "parameters": [
+          {
+            "name": "id_autore",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Autore cancellato con successo"
+          },
+          "404": {
+            "description": "Errore nella cancellazione dell'autore"
+          }
+        }
+      }
+    },
+    "/book-review-api/case-editrici": {
+      "get": {
+        "summary": "Elenca tutte le case editrici",
+        "responses": {
+          "200": {
+            "description": "Lista di case editrici",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CasaEditrice"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crea una nuova casa editrice",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "anno_fondazione": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["nome"]
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Casa editrice creata con successo"
+            },
+            "400": {
+              "description": "Errore nella creazione della casa editrice"
+            }
+          }
+        }
+      }
+    },
+    "/book-review-api/case-editrici/{id}": {
+      "get": {
+        "summary": "Mostra una singola casa editrice",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Casa editrice trovata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CasaEditrice"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Casa editrice non trovata"
+          }
+        }
+      },
+      "put": {
+        "summary": "Aggiorna una casa editrice esistente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "anno_fondazione": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Casa editrice aggiornata con successo"
+            },
+            "400": {
+              "description": "Errore nell'aggiornamento della casa editrice"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Cancella una casa editrice",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Casa editrice cancellata con successo"
+          },
+          "404": {
+            "description": "Errore nella cancellazione della casa editrice"
+          }
+        }
+      }
+    },
+    "/book-review-api/utenti": {
+      "get": {
+        "summary": "Elenca tutti gli utenti",
+        "responses": {
+          "200": {
+            "description": "Lista di utenti",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Utente"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crea un nuovo utente",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "cognome": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": ["nome", "email", "password"]
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Utente creato con successo"
+            },
+            "400": {
+              "description": "Errore nella creazione dell'utente"
+            }
+          }
+        }
+      }
+    },
+    "/book-review-api/utenti/{id}": {
+      "get": {
+        "summary": "Mostra un singolo utente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Utente trovato",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Utente"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Utente non trovato"
+          }
+        }
+      },
+      "put": {
+        "summary": "Aggiorna un utente esistente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "cognome": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Utente aggiornato con successo"
+            },
+            "400": {
+              "description": "Errore nell'aggiornamento dell'utente"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Cancella un utente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Utente cancellato con successo"
+          },
+          "404": {
+            "description": "Errore nella cancellazione dell'utente"
+          }
+        }
+      }
+    },
+    "/book-review-api/recensione": {
+      "get": {
+        "summary": "Elenca tutte le recensioni",
+        "responses": {
+          "200": {
+            "description": "Lista di recensioni",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Recensione"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crea una nuova recensione",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "valutazione": {
+                    "type": "integer"
+                  },
+                  "nomeUtente": {
+                    "type": "string"
+                  },
+                  "dataCreazione": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                },
+                "required": ["valutazione", "nomeUtente"]
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Recensione creata con successo"
+            },
+            "400": {
+              "description": "Errore nella creazione della recensione"
+            }
+          }
+        }
+      }
+    },
+    "/book-review-api/recensione/{id}": {
+      "get": {
+        "summary": "Trova una recensione per ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recensione trovata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Recensione"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Recensione non trovata"
+          }
+        }
+      },
+      "put": {
+        "summary": "Aggiorna una recensione esistente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "commento": {
+                    "type": "string"
+                  },
+                  "valutazione": {
+                    "type": "integer"
+                  },
+                  "nomeUtente": {
+                    "type": "string"
+                  },
+                  "dataCreazione": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Recensione aggiornata con successo"
+            },
+            "400": {
+              "description": "Errore nell'aggiornamento della recensione"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Cancella una recensione",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Recensione cancellata con successo"
+          },
+          "404": {
+            "description": "Errore nella cancellazione della recensione"
+          }
+        }
+      }
+    },
+    "/book-review-api/vista": {
+      "get": {
+        "summary": "Visualizza la pagina dei libri",
+        "responses": {
+          "200": {
+            "description": "Visualizzazione della pagina dei libri"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -244,6 +845,83 @@
           }
         },
         "required": ["id", "titolo"]
+      },
+      "Autore": {
+        "type": "object",
+        "properties": {
+          "id_autore": {
+            "type": "integer"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "cognome": {
+            "type": "string"
+          },
+          "data_nascita": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": ["id_autore", "nome", "cognome"]
+      },
+      "CasaEditrice": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "anno_fondazione": {
+            "type": "integer"
+          }
+        },
+        "required": ["id", "nome"]
+      },
+      "Utente": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "cognome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "nome", "email"]
+      },
+      "Recensione": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "valutazione": {
+            "type": "integer"
+          },
+          "nomeUtente": {
+            "type": "string"
+          },
+          "dataCreazione": {
+            "type": "string",
+            "format": "date"
+          },
+          "commento": {
+            "type": "string"
+          }
+        },
+        "required": ["id", "valutazione", "nomeUtente"]
       }
     }
   }
