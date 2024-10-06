@@ -12,10 +12,13 @@ require_once "../app/models/CasaEditrice.php";
 require_once "../app/models/CasaEditriceDAO.php";
 require_once "../app/models/Autore.php";
 require_once "../app/models/AutoreDAO.php";
+require_once "../app/models/Recensione.php";
+require_once "../app/models/RecensioneDAO.php";
 require_once "../app/controllers/LibroController.php";
 require_once "../app/controllers/UtenteController.php";
 require_once "../app/controllers/CasaEditriceController.php";
 require_once "../app/controllers/Autore_controller.php";
+require_once "../app/controllers/RecensioneController.php";
 require_once "../app/controllers/VistaController.php";
 
 function route()
@@ -46,12 +49,15 @@ function route()
         // Autori
         $r->addRoute("GET", "/book-review-api/autori", ["AutoreController", "getAllAuthors"]);  // Elenca tutti gli autori
         $r->addRoute('GET', '/book-review-api/autori/{id_autore:\d+}', ["AutoreController", "getAuthorsById"]); // Elenca Autore (id)
-        $r->addRoute('PUT', '/book-review-api/autori/{id_autore:\d+}', ["AutoreController", "updateAuthors"]); // Elenca Autore (id)
-        $r->addRoute('POST', '/book-review-api/autori', ["AutoreController", "createAuthors"]); // Elenca Autore (id)
-        $r->addRoute('DELETE', '/book-review-api/autori/{id_autore:\d+}', ["AutoreController", "deleteAuthors"]); // Elenca Autore (id)
-
-
-
+        $r->addRoute('PUT', '/book-review-api/autori/{id_autore:\d+}', ["AutoreController", "updateAuthors"]); // Aggiorna Autore (id)
+        $r->addRoute('POST', '/book-review-api/autori', ["AutoreController", "createAuthors"]); // Crea nuovo Autore (id)
+        $r->addRoute('DELETE', '/book-review-api/autori/{id_autore:\d+}', ["AutoreController", "deleteAuthors"]); // Elimina Autore (id)
+        //Recensioni
+        $r->addRoute("GET", "/book-review-api/recensioni", ["RecensioneController", "getAllRecensioni"]);  // Elenca tutti gli autori
+        $r->addRoute("GET", "/book-review-api/recensioni/{id:\d+}", ["RecensioneController", "getRecensioneById"]);  // Elenca tutti gli autori
+        $r->addRoute("PUT", "/book-review-api/recensioni/{id:\d+}", ["RecensioneController", "updateRecensione"]);  // Elenca tutti gli autori
+        $r->addRoute("POST", "/book-review-api/recensioni/{id:\d+}", ["RecensioneController", "createRecensione"]);  // Elenca tutti gli autori
+        $r->addRoute("DELETE", "/book-review-api/recensioni/{id:\d+}", ["RecensioneController", "deleteRecensione"]);  // Elenca tutti gli autori
         // Nuova rotta per il VistaController
         $r->addRoute('GET', '/book-review-api/vista', ['VistaController', 'showBooksView']); // Mostra la vista dei libri
     });
