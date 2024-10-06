@@ -1,0 +1,250 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Book Review API",
+    "version": "1.0.0",
+    "description": "API per la gestione dei libri"
+  },
+  "paths": {
+    "/book-review-api/libri": {
+      "get": {
+        "summary": "Elenca tutti i libri",
+        "responses": {
+          "200": {
+            "description": "Lista di libri",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Libro"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Crea un nuovo libro",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "titolo": {
+                    "type": "string"
+                  },
+                  "id_autore": {
+                    "type": "integer"
+                  },
+                  "anno_pubblicazione": {
+                    "type": "integer"
+                  },
+                  "genere": {
+                    "type": "string"
+                  },
+                  "isbn": {
+                    "type": "string"
+                  },
+                  "id_casa_editrice": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["titolo", "id_autore"]
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Libro creato con successo",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Errore nella creazione del libro"
+            }
+          }
+        }
+      }
+    },
+    "/book-review-api/libri/{id}": {
+      "get": {
+        "summary": "Mostra un singolo libro",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Libro trovato",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Libro"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Libro non trovato"
+          }
+        }
+      },
+      "put": {
+        "summary": "Aggiorna un libro esistente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "titolo": {
+                    "type": "string"
+                  },
+                  "id_autore": {
+                    "type": "integer"
+                  },
+                  "anno_pubblicazione": {
+                    "type": "integer"
+                  },
+                  "genere": {
+                    "type": "string"
+                  },
+                  "isbn": {
+                    "type": "string"
+                  },
+                  "id_casa_editrice": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Libro aggiornato con successo"
+            },
+            "400": {
+              "description": "Errore nell'aggiornamento del libro"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Cancella un libro",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Libro cancellato con successo"
+          },
+          "404": {
+            "description": "Errore nella cancellazione del libro"
+          }
+        }
+      }
+    },
+    "/book-review-api/libri/genre/{genere}": {
+      "get": {
+        "summary": "Mostra libri in base al genere",
+        "parameters": [
+          {
+            "name": "genere",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista di libri per genere",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Libro"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Genere non trovato"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Libro": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "titolo": {
+            "type": "string"
+          },
+          "id_autore": {
+            "type": "integer"
+          },
+          "anno_pubblicazione": {
+            "type": "integer"
+          },
+          "genere": {
+            "type": "string"
+          },
+          "isbn": {
+            "type": "string"
+          },
+          "id_casa_editrice": {
+            "type": "integer"
+          }
+        },
+        "required": ["id", "titolo"]
+      }
+    }
+  }
+}

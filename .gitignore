@@ -6,7 +6,7 @@ config.php
 
 # Ignora directory delle dipendenze
 /vendor/
-/swagger/
+
 /swagger-ui/
 
 # Ignora file temporanei e di sistema
