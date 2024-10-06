@@ -1,8 +1,5 @@
 <?php
 
-include_once "Recensione.php";
-include_once "../config/Database.php";
-
 class RecensioneDAO
 {
     private $db;
