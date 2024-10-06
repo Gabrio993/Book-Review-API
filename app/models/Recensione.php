@@ -1,5 +1,3 @@
-[StartOfDocument app/models/Recensione.php]
-[CursorSurroundingLines]
 <?php
 
 class Recensione
