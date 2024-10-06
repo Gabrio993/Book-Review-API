@@ -1,7 +1,4 @@
 <?php
-require_once "../config/Database.php";
-require_once "Autore.php";
-
 
 class AutoreDAO
 {
