@@ -109,6 +109,7 @@ class LibroController
     {
         $libroDAO = new LibroDAO();
         $libri = $libroDAO->allBooks();
+        header("Content-Type: text/html");
         require __DIR__ . '/../views/vista.php'; // il file vista
     }
 }
