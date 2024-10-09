@@ -5,7 +5,7 @@ config.php
 *.log
 
 # Ignora directory delle dipendenze
-/vendor/
+vendor
 
 
 
