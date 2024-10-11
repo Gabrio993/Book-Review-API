@@ -19,3 +19,6 @@ che garantisce scalabilità e manutenibilità, facilitando l'evoluzione del prog
 
 4. All'interno della cartella `book-review-api/migration/db_finale/book_db.sql`, è presente il database allo stadio finale da poter  
      scaricare per la verifica   ed il funzionamento dell' applicativo. 
+
+5. In `book-review-api/.htaccess` é presente la seguente regola: all'url `localhost/book-review-api/` (con presenza o meno dello slash finale),  
+    l'utente viene automaticamnete reindirizzato all'url `localhost/book-review-api/vista.php`
