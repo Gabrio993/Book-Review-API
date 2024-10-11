@@ -10,7 +10,12 @@ che garantisce scalabilità e manutenibilità, facilitando l'evoluzione del prog
 
 ## Documentazione
 
-Per ulteriori dettagli sull'utilizzo dell'API, è possibile consultare la documentazione **Swagger**:  
-[Documentazione Swagger](http://localhost/book-review-api/swagger-ui/dist/index.html)
+1. Per ulteriori dettagli sull'utilizzo dell'API, è possibile consultare la documentazione **Swagger**:  
+    [Documentazione Swagger](http://localhost/book-review-api/swagger-ui/dist/index.html)
 
-[Interfaccia Utente per operazioni crud](http://localhost/book-review-api/vista)
+2. [Interfaccia Utente per operazioni crud](http://localhost/book-review-api/)
+
+3. Per tutti gli altri endpoint guardare il file `/book-review-api/app/router.php` oppure la documentazione swagger al link superiore.
+
+4. All'interno della cartella `book-review-api/migration/db_finale/book_db.sql`, è presente il database allo stadio finale da poter  
+     scaricare per la verifica   ed il funzionamento dell' applicativo. 
