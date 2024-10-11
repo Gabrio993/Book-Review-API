@@ -53,11 +53,11 @@ function route()
         $r->addRoute('POST', '/book-review-api/autori', ["AutoreController", "createAuthors"]); // Crea nuovo Autore (id)
         $r->addRoute('DELETE', '/book-review-api/autori/{id_autore:\d+}', ["AutoreController", "deleteAuthors"]); // Elimina Autore (id)
         //Recensioni
-        $r->addRoute("GET", "/book-review-api/recensioni", ["RecensioneController", "getAllRecensioni"]);  // Elenca tutti gli autori
-        $r->addRoute("GET", "/book-review-api/recensioni/{id:\d+}", ["RecensioneController", "getRecensioneById"]);  // Elenca tutti gli autori
-        $r->addRoute("PUT", "/book-review-api/recensioni/{id:\d+}", ["RecensioneController", "updateRecensione"]);  // Elenca tutti gli autori
-        $r->addRoute("POST", "/book-review-api/recensioni/{id:\d+}", ["RecensioneController", "createRecensione"]);  // Elenca tutti gli autori
-        $r->addRoute("DELETE", "/book-review-api/recensioni/{id:\d+}", ["RecensioneController", "deleteRecensione"]);  // Elenca tutti gli autori
+        $r->addRoute("GET", "/book-review-api/recensioni", ["RecensioneController", "getAllRecensioni"]);  // Elenca tutte le recensioni
+        $r->addRoute("GET", "/book-review-api/recensioni/{id:\d+}", ["RecensioneController", "getRecensioneById"]);  // Elenca una recensione (id)
+        $r->addRoute("PUT", "/book-review-api/recensioni/{id:\d+}", ["RecensioneController", "updateRecensione"]);  // Aggiorna recensione
+        $r->addRoute("POST", "/book-review-api/recensioni/{id:\d+}", ["RecensioneController", "createRecensione"]);  // Crea una recensione
+        $r->addRoute("DELETE", "/book-review-api/recensioni/{id:\d+}", ["RecensioneController", "deleteRecensione"]);  // Cancella una recensione
         // Nuova rotta per il VistaController
         $r->addRoute('GET', '/book-review-api/vista', ['VistaController', 'showBooksView']); // Mostra la vista dei libri
     });
