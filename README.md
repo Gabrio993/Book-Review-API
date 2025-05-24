@@ -1,4 +1,4 @@
-# Book-Review-API  Gruppo 4
+# Book-Review-API 
 
 Sviluppo di una web API per un servizio di recensioni di libri.
 
